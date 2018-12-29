@@ -1,6 +1,8 @@
 package com.mattair.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -10,19 +12,21 @@ public class Flight extends BaseEntity {
 
     private static final long serialVersionUID = -4970497115161591143L;
 
-    //Hibernate join
+    @OneToOne
+    @JoinColumn(name = "FK_PlaneID")
     private Plane plane;
 
-    //Hibernate join
+    @OneToOne
+    @JoinColumn(name = "FK_StartLocationID")
     private Location startLocation;
 
-    //Hibernate join
+    @OneToOne
+    @JoinColumn(name = "FK_DestinationID")
     private Location destination;
 
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private LocalDateTime createdDateTime;
-
 
     public Flight() {}
 
@@ -30,6 +34,7 @@ public class Flight extends BaseEntity {
                   final LocalDateTime departureDateTime, final LocalDateTime arrivalDateTime,
                   final LocalDateTime createdDateTime) {
         setId(id);
+        this.plane = plane;
         this.startLocation = startLocation;
         this.destination = destination;
         this.departureDateTime = departureDateTime;
