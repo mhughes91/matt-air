@@ -16,10 +16,9 @@ public class FlightRepositoryImpl implements FlightRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
     public List<Flight> getAllFlights() {
-        //Works but commented out code below is better, needs chaging
+        //TODO: Works but commented out code below is better, needs changing
         CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<Flight> criteria = builder.createQuery(Flight.class);
         criteria.from(Flight.class);
