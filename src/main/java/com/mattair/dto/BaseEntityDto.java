@@ -1,19 +1,12 @@
-package com.mattair.domain;
+package com.mattair.dto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
-@MappedSuperclass
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntityDto implements Serializable {
 
-    private static final long serialVersionUID = -4099942412723008768L;
+    private static final long serialVersionUID = -4996307973944147354L;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-
-    @Version
-    @Column(name = "OBJ_VERSION")
     private int version;
 
     public Integer getId() {
