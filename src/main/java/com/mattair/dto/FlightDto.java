@@ -47,7 +47,7 @@ public class FlightDto extends BaseEntityDto {
         return createdDateTime;
     }
 
-    public class FlightDtoBuilder {
+    public static class Builder {
         private Integer id;
         private PlaneDto plane;
         private LocationDto startLocation;
@@ -57,42 +57,42 @@ public class FlightDto extends BaseEntityDto {
         private String createdDateTime;
         private int version;
 
-        public FlightDtoBuilder setId(Integer id) {
+        public Builder setId(Integer id) {
             this.id = id;
             return this;
         }
 
-        public FlightDtoBuilder setPlane(PlaneDto plane) {
+        public Builder setPlane(PlaneDto plane) {
             this.plane = plane;
             return this;
         }
 
-        public FlightDtoBuilder setStartLocation(LocationDto startLocation) {
+        public Builder setStartLocation(LocationDto startLocation) {
             this.startLocation = startLocation;
             return this;
         }
 
-        public FlightDtoBuilder setDestination(LocationDto destination) {
+        public Builder setDestination(LocationDto destination) {
             this.destination = destination;
             return this;
         }
 
-        public FlightDtoBuilder setDepartureDateTime(String departureDateTime) {
+        public Builder setDepartureDateTime(String departureDateTime) {
             this.departureDateTime = departureDateTime;
             return this;
         }
 
-        public FlightDtoBuilder setArrivalDateTime(String arrivalDateTime) {
+        public Builder setArrivalDateTime(String arrivalDateTime) {
             this.arrivalDateTime = arrivalDateTime;
             return this;
         }
 
-        public FlightDtoBuilder setCreatedDateTime(String createdDateTime) {
+        public Builder setCreatedDateTime(String createdDateTime) {
             this.createdDateTime = createdDateTime;
             return this;
         }
 
-        public FlightDtoBuilder setVersion(int version) {
+        public Builder setVersion(int version) {
             this.version = version;
             return this;
         }

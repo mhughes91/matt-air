@@ -1,12 +1,10 @@
 package com.mattair.controller;
 
-import com.mattair.domain.Flight;
+import com.mattair.dto.FlightDto;
 
 import java.util.List;
 
 public interface FlightController {
 
-    List<Flight> getAllFlights();
-
-    void save(final Flight flight);
+    List<FlightDto> getAllFlights();
 }

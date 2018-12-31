@@ -66,7 +66,7 @@ public class Flight extends BaseEntity {
         return createdDateTime;
     }
 
-    public class FlightBuilder {
+    public static class Builder {
         private Integer id;
         private Plane plane;
         private Location startLocation;
@@ -75,37 +75,37 @@ public class Flight extends BaseEntity {
         private LocalDateTime arrivalDateTime;
         private LocalDateTime createdDateTime;
 
-        public FlightBuilder setId(Integer id) {
+        public Builder setId(Integer id) {
             this.id = id;
             return this;
         }
 
-        public FlightBuilder setPlane(Plane plane) {
+        public Builder setPlane(Plane plane) {
             this.plane = plane;
             return this;
         }
 
-        public FlightBuilder setStartLocation(Location startLocation) {
+        public Builder setStartLocation(Location startLocation) {
             this.startLocation = startLocation;
             return this;
         }
 
-        public FlightBuilder setDestination(Location destination) {
+        public Builder setDestination(Location destination) {
             this.destination = destination;
             return this;
         }
 
-        public FlightBuilder setDepartureDateTime(LocalDateTime departureDateTime) {
+        public Builder setDepartureDateTime(LocalDateTime departureDateTime) {
             this.departureDateTime = departureDateTime;
             return this;
         }
 
-        public FlightBuilder setArrivalDateTime(LocalDateTime arrivalDateTime) {
+        public Builder setArrivalDateTime(LocalDateTime arrivalDateTime) {
             this.arrivalDateTime = arrivalDateTime;
             return this;
         }
 
-        public FlightBuilder setCreatedDateTime(LocalDateTime createdDateTime) {
+        public Builder setCreatedDateTime(LocalDateTime createdDateTime) {
             this.createdDateTime = createdDateTime;
             return this;
         }
