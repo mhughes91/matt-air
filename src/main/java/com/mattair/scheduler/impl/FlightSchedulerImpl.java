@@ -23,7 +23,7 @@ public class FlightSchedulerImpl implements FlightScheduler {
 
     @Scheduled(fixedRate = 10000)
     public void generateRandomFlight() {
-        final Plane plane = new Plane(1,"1234","747");
+        final Plane plane = new Plane(1,"1234","747",true);
         final Location start = new Location(1, "Manchester", "England");
         final Location destination = new Location(1, "Manchester", "England");
         final LocalDateTime time = LocalDateTime.now();

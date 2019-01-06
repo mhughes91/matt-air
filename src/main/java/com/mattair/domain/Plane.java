@@ -11,13 +11,15 @@ public class Plane extends BaseEntity {
 
     private String callSign;
     private String planeType;
+    private boolean inUse;
 
     public Plane() {}
 
-    public Plane(final Integer id, final String callSign, final String planeType) {
+    public Plane(final Integer id, final String callSign, final String planeType, final boolean inUse) {
         setId(id);
         this.callSign = callSign;
         this.planeType = planeType;
+        this.inUse = inUse;
     }
 
     public String getCallSign() {
@@ -34,5 +36,13 @@ public class Plane extends BaseEntity {
 
     public void setPlaneType(String planeType) {
         this.planeType = planeType;
+    }
+
+    public boolean isInUse() {
+        return inUse;
+    }
+
+    public void setInUse(boolean inUse) {
+        this.inUse = inUse;
     }
 }

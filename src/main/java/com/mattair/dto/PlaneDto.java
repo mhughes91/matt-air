@@ -6,11 +6,16 @@ public class PlaneDto extends BaseEntityDto {
 
     private String callSign;
     private String planeType;
+    private String inUse;
 
-    public PlaneDto(final Integer id, final String callSign, final String planeType, final int version) {
+    public PlaneDto() {}
+
+    public PlaneDto(final Integer id, final String callSign, final String planeType, final String inUse,
+                    final int version) {
         setId(id);
         this.callSign = callSign;
         this.planeType = planeType;
+        this.inUse = inUse;
         setVersion(version);
     }
 
@@ -28,5 +33,13 @@ public class PlaneDto extends BaseEntityDto {
 
     public void setPlaneType(String planeType) {
         this.planeType = planeType;
+    }
+
+    public String getInUse() {
+        return inUse;
+    }
+
+    public void setInUse(String inUse) {
+        this.inUse = inUse;
     }
 }

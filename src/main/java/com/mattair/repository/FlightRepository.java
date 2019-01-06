@@ -1,12 +1,6 @@
 package com.mattair.repository;
 
 import com.mattair.domain.Flight;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface FlightRepository {
-
-    List<Flight> getAllFlights();
-
-    void save(final Flight flight);
-}
+public interface FlightRepository extends CrudRepository<Flight, Integer> {}

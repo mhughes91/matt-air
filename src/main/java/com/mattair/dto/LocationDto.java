@@ -7,6 +7,8 @@ public class LocationDto extends BaseEntityDto {
     private String city;
     private String country;
 
+    public LocationDto() {}
+
     public LocationDto(final Integer id, final String city, final String country, final int version) {
         setId(id);
         this.city = city;

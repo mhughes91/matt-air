@@ -11,6 +11,8 @@ public class FlightDto extends BaseEntityDto {
     private String arrivalDateTime;
     private String createdDateTime;
 
+    public FlightDto() {}
+
     public FlightDto(final Integer id, final PlaneDto plane, final LocationDto startLocation,
                      final LocationDto destination, final String departureDateTime, final String arrivalDateTime,
                      final String createdDateTime) {
@@ -27,24 +29,48 @@ public class FlightDto extends BaseEntityDto {
         return plane;
     }
 
+    public void setPlane(PlaneDto plane) {
+        this.plane = plane;
+    }
+
     public LocationDto getStartLocation() {
         return startLocation;
+    }
+
+    public void setStartLocation(LocationDto startLocation) {
+        this.startLocation = startLocation;
     }
 
     public LocationDto getDestination() {
         return destination;
     }
 
+    public void setDestination(LocationDto destination) {
+        this.destination = destination;
+    }
+
     public String getDepartureDateTime() {
         return departureDateTime;
+    }
+
+    public void setDepartureDateTime(String departureDateTime) {
+        this.departureDateTime = departureDateTime;
     }
 
     public String getArrivalDateTime() {
         return arrivalDateTime;
     }
 
+    public void setArrivalDateTime(String arrivalDateTime) {
+        this.arrivalDateTime = arrivalDateTime;
+    }
+
     public String getCreatedDateTime() {
         return createdDateTime;
+    }
+
+    public void setCreatedDateTime(String createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
     public static class Builder {

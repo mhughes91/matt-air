@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class FlightServiceImpl implements FlightService {
 
@@ -16,8 +14,8 @@ public class FlightServiceImpl implements FlightService {
     private FlightRepository flightRepository;
 
     @Override
-    public List<Flight> getAllFlights() {
-        return this.flightRepository.getAllFlights();
+    public Iterable<Flight> getAllFlights() {
+        return this.flightRepository.findAll();
     }
 
     @Override

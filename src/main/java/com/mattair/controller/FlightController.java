@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface FlightController {
 
-    List<FlightDto> getAllFlights();
+    Iterable<FlightDto> getAllFlights();
 }
