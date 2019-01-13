@@ -3,9 +3,12 @@ package com.mattair.scheduler.impl;
 import com.mattair.domain.Flight;
 import com.mattair.domain.Location;
 import com.mattair.domain.Plane;
+import com.mattair.repositories.LocationRepository;
+import com.mattair.repositories.PlaneRepository;
 import com.mattair.scheduler.FlightScheduler;
 import com.mattair.services.FlightService;
 import com.mattair.services.LocationService;
+import com.mattair.services.PlaneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -22,18 +25,38 @@ public class FlightSchedulerImpl implements FlightScheduler {
     private FlightService flightService;
 
     @Autowired
+    private LocationRepository locationRepository;
+
+    @Autowired
     private LocationService locationService;
+
+    @Autowired
+    private PlaneRepository planeRepository;
+
+    @Autowired
+    private PlaneService planeService;
 
     private final static Logger LOGGER = Logger.getLogger(FlightSchedulerImpl.class.getName());
 
     @Scheduled(fixedRate = 10000)
     public void generateRandomFlight() {
-        final Plane plane = new Plane(1,"1234","747",true);
-        final Location start = new Location(1, "Manchester", "England");
-        final Location destination = new Location(1, "Manchester", "England");
-        final LocalDateTime time = LocalDateTime.now();
+        final Plane plane = getRandomPlane();
+        final Location startLocation = getRandomLocation();
+        Location destination = getRandomLocation();
 
-        Flight flight = new Flight(null,plane,start,destination,time, time, time);
+        while (startLocation.getId() == destination.getId()) {
+            destination = getRandomLocation();
+        }
+
+        final Flight flight = new Flight.Builder()
+                .setId(null)
+                .setPlane(plane)
+                .setStartLocation(startLocation)
+                .setDestination(destination)
+                .setDepartureDateTime(LocalDateTime.now())
+                .setArrivalDateTime(LocalDateTime.now())
+                .setCreatedDateTime(LocalDateTime.now())
+                .createFlight();
 
         try {
             this.flightService.save(flight);
@@ -43,9 +66,21 @@ public class FlightSchedulerImpl implements FlightScheduler {
         }
     }
 
-    private int generateRandomNumber() {
+    private Plane getRandomPlane() {
+        final int randomNumber = generateRandomNumber(this.planeRepository.count());
+
+        return this.planeService.getPlaneById(randomNumber);
+    }
+
+    private Location getRandomLocation() {
+        final int randomNumber = generateRandomNumber(this.locationRepository.count());
+
+        return this.locationService.getLocationById(randomNumber);
+    }
+
+    private int generateRandomNumber(final long bound) {
         final Random random = new Random();
 
-        return random.nextInt(1);
+        return random.nextInt(Math.toIntExact(bound)) + 1;
     }
 }
