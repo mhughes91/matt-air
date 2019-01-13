@@ -1,4 +1,4 @@
-package com.mattair.service;
+package com.mattair.services;
 
 import com.mattair.domain.Flight;
 

@@ -1,8 +1,8 @@
-package com.mattair.service.impl;
+package com.mattair.services.impl;
 
 import com.mattair.domain.Flight;
-import com.mattair.repository.FlightRepository;
-import com.mattair.service.FlightService;
+import com.mattair.repositories.FlightRepository;
+import com.mattair.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

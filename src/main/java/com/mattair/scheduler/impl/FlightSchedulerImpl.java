@@ -4,12 +4,14 @@ import com.mattair.domain.Flight;
 import com.mattair.domain.Location;
 import com.mattair.domain.Plane;
 import com.mattair.scheduler.FlightScheduler;
-import com.mattair.service.FlightService;
+import com.mattair.services.FlightService;
+import com.mattair.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +20,9 @@ public class FlightSchedulerImpl implements FlightScheduler {
 
     @Autowired
     private FlightService flightService;
+
+    @Autowired
+    private LocationService locationService;
 
     private final static Logger LOGGER = Logger.getLogger(FlightSchedulerImpl.class.getName());
 
@@ -36,5 +41,11 @@ public class FlightSchedulerImpl implements FlightScheduler {
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Generating a random flight failed", e);
         }
+    }
+
+    private int generateRandomNumber() {
+        final Random random = new Random();
+
+        return random.nextInt(1);
     }
 }

@@ -1,4 +1,4 @@
-package com.mattair.repository;
+package com.mattair.repositories;
 
 import com.mattair.domain.Flight;
 import org.springframework.data.repository.CrudRepository;

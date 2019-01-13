@@ -1,9 +1,9 @@
-package com.mattair.controller.impl;
+package com.mattair.controllers.impl;
 
-import com.mattair.controller.FlightController;
+import com.mattair.controllers.FlightController;
 import com.mattair.domain.Flight;
-import com.mattair.dto.FlightDto;
-import com.mattair.service.FlightService;
+import com.mattair.dtos.FlightDto;
+import com.mattair.services.FlightService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

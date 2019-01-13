@@ -1,4 +1,4 @@
-package com.mattair.util;
+package com.mattair.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

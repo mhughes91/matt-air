@@ -1,4 +1,4 @@
-package com.mattair.dto;
+package com.mattair.dtos;
 
 public class LocationDto extends BaseEntityDto {
 
