@@ -4,5 +4,5 @@ import com.mattair.domain.Location;
 
 public interface LocationService {
 
-    Location getLocationById(final int id);
+    Location getLocationById(final Integer id);
 }

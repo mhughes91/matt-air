@@ -4,5 +4,5 @@ import com.mattair.domain.Plane;
 
 public interface PlaneService {
 
-    Plane getPlaneById(final int id);
+    Plane getPlaneById(final Integer id);
 }

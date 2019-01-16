@@ -13,7 +13,7 @@ public class PlaneServiceImpl implements PlaneService {
     private PlaneRepository planeRepository;
 
     @Override
-    public Plane getPlaneById(final int id) {
-        return this.planeRepository.findById(id).get();
+    public Plane getPlaneById(final Integer id) {
+        return this.planeRepository.findById(id).orElse(null);
     }
 }

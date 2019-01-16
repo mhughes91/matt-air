@@ -21,22 +21,24 @@ import java.util.logging.Logger;
 @Component
 public class FlightSchedulerImpl implements FlightScheduler {
 
-    @Autowired
-    private FlightService flightService;
-
-    @Autowired
-    private LocationRepository locationRepository;
-
-    @Autowired
-    private LocationService locationService;
-
-    @Autowired
-    private PlaneRepository planeRepository;
-
-    @Autowired
-    private PlaneService planeService;
+    private final FlightService flightService;
+    private final LocationRepository locationRepository;
+    private final LocationService locationService;
+    private final PlaneRepository planeRepository;
+    private final PlaneService planeService;
 
     private final static Logger LOGGER = Logger.getLogger(FlightSchedulerImpl.class.getName());
+
+    @Autowired
+    public FlightSchedulerImpl(final FlightService flightService, final LocationRepository locationRepository,
+                               final LocationService locationService, final PlaneRepository planeRepository,
+                               final PlaneService planeService) {
+        this.flightService = flightService;
+        this.locationRepository = locationRepository;
+        this.locationService = locationService;
+        this.planeRepository = planeRepository;
+        this.planeService = planeService;
+    }
 
     @Scheduled(fixedRate = 10000)
     public void generateRandomFlight() {
@@ -44,7 +46,7 @@ public class FlightSchedulerImpl implements FlightScheduler {
         final Location startLocation = getRandomLocation();
         Location destination = getRandomLocation();
 
-        while (startLocation.getId() == destination.getId()) {
+        while (startLocation.getId() == destination.getId() || startLocation.getCity().equals(destination.getCity())) {
             destination = getRandomLocation();
         }
 
@@ -60,9 +62,9 @@ public class FlightSchedulerImpl implements FlightScheduler {
 
         try {
             this.flightService.save(flight);
-            LOGGER.log(Level.INFO, "Generated Flight Successfully");
+            LOGGER.log(Level.INFO, "Created Flight Successfully");
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Generating a random flight failed", e);
+            LOGGER.log(Level.SEVERE, "Creating a flight failed", e);
         }
     }
 

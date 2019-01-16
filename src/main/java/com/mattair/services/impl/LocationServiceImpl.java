@@ -13,7 +13,7 @@ public class LocationServiceImpl implements LocationService {
     private LocationRepository locationRepository;
 
     @Override
-    public Location getLocationById(final int id) {
-        return this.locationRepository.findById(id).get();
+    public Location getLocationById(final Integer id) {
+        return this.locationRepository.findById(id).orElse(null);
     }
 }
