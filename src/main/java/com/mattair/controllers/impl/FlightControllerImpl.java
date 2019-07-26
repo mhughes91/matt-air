@@ -1,28 +1,33 @@
 package com.mattair.controllers.impl;
 
-import com.mattair.controllers.FlightController;
-import com.mattair.domain.Flight;
-import com.mattair.dtos.FlightDto;
-import com.mattair.services.FlightService;
+import static com.google.common.collect.Lists.newArrayList;
+
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-import static com.google.common.collect.Lists.newArrayList;
+import com.mattair.controllers.FlightController;
+import com.mattair.domain.Flight;
+import com.mattair.dtos.FlightDto;
+import com.mattair.services.FlightService;
 
 @RestController
 @RequestMapping("/mattair/flight")
 public class FlightControllerImpl implements FlightController {
 
-    @Autowired
     private FlightService flightService;
 
-    @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    public FlightControllerImpl(final FlightService flightService, final ModelMapper modelMapper) {
+        this.flightService = flightService;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     @GetMapping("/all")
@@ -30,9 +35,7 @@ public class FlightControllerImpl implements FlightController {
         final List<Flight> flights = newArrayList(this.flightService.getAllFlights());
         final List<FlightDto> flightDtos = newArrayList();
 
-        for (final Flight flight : flights) {
-            flightDtos.add(this.modelMapper.map(flight, FlightDto.class));
-        }
+        flights.forEach(flight -> flightDtos.add(this.modelMapper.map(flight, FlightDto.class)));
 
         return flightDtos;
     }
