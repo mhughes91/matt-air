@@ -3,6 +3,7 @@ package com.mattair.controllers.impl;
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,9 @@ public class FlightControllerImpl implements FlightController {
     @GetMapping("/all")
     public Iterable<FlightDto> getAllFlights() {
         final List<Flight> flights = newArrayList(this.flightService.getAllFlights());
-        final List<FlightDto> flightDtos = newArrayList();
 
-        flights.forEach(flight -> flightDtos.add(this.modelMapper.map(flight, FlightDto.class)));
-
-        return flightDtos;
+        return flights.stream()
+                .map(flight -> this.modelMapper.map(flight, FlightDto.class))
+                .collect(Collectors.toList());
     }
 }
